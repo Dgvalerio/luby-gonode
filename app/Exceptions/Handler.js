@@ -1,5 +1,8 @@
 'use strict'
 
+const Sentry = require('@sentry/node')
+
+const Config = use('Config')
 const BaseExceptionHandler = use('BaseExceptionHandler')
 const Env = use('Env')
 const Youch = use('Youch')
@@ -18,7 +21,13 @@ class ExceptionHandler extends BaseExceptionHandler {
   }
 
   // eslint-disable-next-line node/handle-callback-err
-  async report (error, { request }) {
+  async report (error) {
+    Sentry.init({
+      dsn: Config.get('services.entry.dsn'),
+      tracesSampleRate: 1.0
+    })
+
+    Sentry.captureException(error)
   }
 }
 
