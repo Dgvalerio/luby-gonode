@@ -4,6 +4,13 @@
 const Model = use('Model')
 
 class Project extends Model {
+  user () {
+    this.belongsTo('App/Models/User')
+  }
+
+  tasks () {
+    return this.hasMany('App/Model/Task')
+  }
 }
 
 module.exports = Project
