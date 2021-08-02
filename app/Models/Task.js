@@ -5,15 +5,15 @@ const Model = use('Model')
 
 class Task extends Model {
   project () {
-    this.belongsTo('App/Models/Project')
+    return this.belongsTo('App/Models/Project')
   }
 
   user () {
-    this.belongsTo('App/Models/User')
+    return this.belongsTo('App/Models/User')
   }
 
   file () {
-    this.belongsTo('App/Models/File')
+    return this.belongsTo('App/Models/File')
   }
 }
 

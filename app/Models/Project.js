@@ -5,11 +5,11 @@ const Model = use('Model')
 
 class Project extends Model {
   user () {
-    this.belongsTo('App/Models/User')
+    return this.belongsTo('App/Models/User')
   }
 
   tasks () {
-    return this.hasMany('App/Model/Task')
+    return this.hasMany('App/Models/Task')
   }
 }
 
